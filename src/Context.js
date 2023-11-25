@@ -7,9 +7,12 @@ class ProductProvider extends Component {
   state = {
     products: [],
     detailProduct: detailProduct,
-    cart: [],
+    cart: storeProducts,
     modalOpen: false,
     modalProduct: detailProduct,
+    cartSubTotal: 0,
+    cartTax: 0,
+    cartTotal: 0,
   };
   // mounts the products
   componentDidMount() {
@@ -33,7 +36,7 @@ class ProductProvider extends Component {
     const product = this.state.products.find((item) => item.id === id);
     return product;
   };
-
+  // setting up the methods
   handleDetail = (id) => {
     const product = this.getItem(id);
     this.setState(() => {
@@ -71,15 +74,36 @@ class ProductProvider extends Component {
     });
   };
 
+  increment = (id) => {
+    console.log("incrementing the cart");
+  };
+
+  decrement = (id) => {
+    console.log("decrementing the cart");
+  };
+
+  removeItem = (id) => {
+    console.log("remove item from cart");
+  };
+
+  clearCart = () => {
+    console.log("clear cart");
+  };
+
   render() {
     return (
       <ProductContext.Provider
         value={{
+          // setting up the states
           ...this.state,
           handleDetail: this.handleDetail,
           addToCart: this.addToCart,
           openModal: this.openModal,
           closeModal: this.closeModal,
+          increment: this.increment,
+          decrement: this.decrement,
+          removeItem: this.removeItem,
+          clearCart: this.clearCart,
         }}
       >
         {this.props.children}
