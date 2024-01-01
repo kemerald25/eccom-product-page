@@ -45,3 +45,25 @@ body {
   font-size: 1.3rem;
   color: var(--mainYellow);
 }
+
+.btn-pay {
+  background: transparent;
+  border: 0.1rem solid var(--mainYellow) !important;
+  color: var(--mainYellow);
+  font-family: "Permanent Marker", cursive;
+  letter-spacing: 0.08rem;
+  font-size: 1rem;
+}
+
+.btn-pay:hover {
+  background: var(--mainYellow);
+  color: var(--mainBlue);
+  border: none;
+}
+
+.crt-updt {
+  font-size: 10px;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 100vw;
+}
