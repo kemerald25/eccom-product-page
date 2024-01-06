@@ -1,7 +1,9 @@
 import React from "react";
+import fetchProductDetails from "../../data";
 
-export default function CartItem({ item, value }) {
-  const { id, title, img, price, total, count } = item;
+
+export default function CartItem({ value }) {
+  const { id, title, img, price, total, count } = fetchProductDetails;
   const { increment, decrement, removeItem } = value;
   return (
     <div className="row my-2 text-capitalize text-center">

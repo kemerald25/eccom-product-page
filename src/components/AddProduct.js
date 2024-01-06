@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AddProduct = () => {
+const AddProduct = ({updateContentCallback }) => {
   const [formData, setFormData] = useState({
     title: '',
     price: '',
-    image: null,
+    image: '',
   });
 
   const handleChange = (e) => {
@@ -26,10 +26,14 @@ const AddProduct = () => {
     formDataToSend.append('title', title);
     formDataToSend.append('price', price);
     formDataToSend.append('image', image);
+    
 
     try {
       await axios.post('http://localhost:5000/api/products', formDataToSend);
       alert('Product added successfully!');
+
+      // Call the updateContentCallback to refresh the content
+      updateContentCallback();
     } catch (error) {
       console.error(error);
       alert('Failed to add product');

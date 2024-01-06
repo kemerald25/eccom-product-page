@@ -2,30 +2,29 @@ import React, { Component } from "react";
 import { ProductConsumer } from "../Context";
 import { Link } from "react-router-dom";
 import { ButtonContainer } from "./Button";
-
+import fetchProductDetails from "../data";
 export default class Details extends Component {
   render() {
     return (
       <ProductConsumer>
         {(value) => {
           const { id, company, img, info, price, title, inCart } =
-            value.detailProduct;
+          fetchProductDetails();
 
           return (
             <div className="container py-5">
               {/* title start */}
-
               <div className="row">
                 <div className="col-10 mx-auto text-center text-slanted text-blue my-5">
                   <h1>{title}</h1>
                 </div>
               </div>
-
               {/* title end */}
 
               {/* product info */}
               <div className="row">
-                <div className="col-10 mx-auto col-md-6 my-3 ">
+                <div className="col-10 mx-auto col-md-6 my-3">
+                  {/* Display the image as a URL from the database */}
                   <img src={img} className="img-fluid" alt="product" />
                 </div>
 

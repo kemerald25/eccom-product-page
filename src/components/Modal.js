@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { ProductConsumer } from "../Context";
 import { ButtonContainer } from "./Button";
 import { Link } from "react-router-dom";
+import fetchProductDetails from "../data";
 
 export default class Modal extends Component {
   render() {
@@ -10,7 +11,7 @@ export default class Modal extends Component {
       <ProductConsumer>
         {(value) => {
           const { modalOpen, closeModal } = value;
-          const { img, title, price } = value.modalProduct;
+          const { img, title, price } = fetchProductDetails;
 
           if (!modalOpen) {
             return null;
@@ -18,11 +19,11 @@ export default class Modal extends Component {
             return (
               <ModalContainer>
                 <div className="row" id="modal">
-                  <div className="col-10 mx-auto   text-center text-capitalize p-5">
+                  <div className="col-10 mx-auto text-center text-capitalize p-5">
                     <h5>Item added to the cart</h5>
                     <img src={img} className="img-fluid" alt="modal img" />
                     <h5>{title}</h5>
-                    <h5 className="text-muted">price : $ {price} </h5>
+                    <h5 className="text-muted">price: $ {price}</h5>
 
                     <Link to="/">
                       <ButtonContainer onClick={() => closeModal()}>
