@@ -10,6 +10,7 @@ import Details from "./components/Details";
 import Cart from "./components/cart/Cart";
 import Default from "./components/Default";
 import Modal from "./components/Modal";
+import AddProduct from '../src/components/AddProduct';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <Route path="/details" element={<Details />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<Default />} />
+          <Route path="/add-product" element={<AddProduct />} />
         </Routes>
         <Modal />
       </React.Fragment>
