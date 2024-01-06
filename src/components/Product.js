@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ProductConsumer } from '../Context';
 import PropTypes from 'prop-types';
-import ItemForm from './ItemForm';
+import ProductList from './ProductList';
 
 const Product = ({ product }) => {
+  // State to store products fetched from MongoDB
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -26,6 +27,7 @@ const Product = ({ product }) => {
 
   return (
     <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
+
       <div className="card">
         <ProductConsumer>
           {(value) => (
@@ -67,9 +69,8 @@ const Product = ({ product }) => {
           </h5>
         </div>
       </div>
-      {/* ItemForm Interface */}
-      <ItemForm onAddItem={(newItem) => setProducts([...products, newItem])} />
       {/* Link to AddProduct page */}
+      <ProductList />
       <Link to="/add-product">Go to AddProduct</Link>
     </ProductWrapper>
   );
@@ -144,3 +145,5 @@ const ProductWrapper = styled.div`
     cursor: pointer;
   }
 `;
+
+export default Product;
